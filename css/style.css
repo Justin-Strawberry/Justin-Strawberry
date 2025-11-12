@@ -1,0 +1,1308 @@
+/* ==========================================================================
+   Justin Valladares - style.css
+   Reemplazo completo: paleta profesional, mejoras visuales, responsive.
+   Palette:
+     - Dark background:  #0f172a / #111827 / #1B1F23
+     - Light background: #F9FAFB
+     - Accent primary:   #00ADB5
+     - Accent bright:    #00E0C6
+     - Text light:       #EAEAEA
+     - Text dark:        #1E1E1E
+   ========================================================================== */
+
+/* === RESET / GLOBALS === */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* overall dark base */
+  color: #EAEAEA;
+  font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+body{
+  width: 100%;
+}
+
+/* small helper */
+.container-centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Utility text colors (keeps your html classes working) */
+.texto-negro { color: #1E1E1E !important; }
+.texto-blanco { color: #ffffff !important; }
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+.navbar {
+  padding: 1.25rem 2rem;
+  background-color: #0b1220; /* darker */
+  box-shadow: 0 6px 24px rgba(2,6,23,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+  z-index: 120000000000;
+}
+
+.navbar .navbar-brand img {
+  display: inline-block;
+  vertical-align: middle;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.6));
+}
+
+.navbar-icon-section {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.navbar-icon-section h1 {
+  font-size: 1.45rem;
+  margin: 0;
+  color: #EAEAEA;
+  font-family: 'Rubik Dirt', cursive;
+  letter-spacing: 0.5px;
+}
+
+/* nav links styling */
+.navbar-nav .nav-link {
+  color: rgba(234,234,234,0.85);
+  padding: 0.45rem 0.75rem;
+  transition: color 220ms ease, transform 200ms ease;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: #00ADB5;
+  transform: translateY(-2px);
+}
+
+/* visible active state for navbar links */
+.navbar-nav .nav-link.active {
+  color: #00E0C6 !important;   /* color de destaque */
+  font-weight: 700;
+  position: relative;
+}
+.navbar-nav .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 3px;
+  background: linear-gradient(90deg,#00ADB5,#00E0C6);
+  border-radius: 4px;
+}
+
+
+
+/* collapse alignment for larger screens */
+.navbar-collapse {
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* === Navbar fija === */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+body {
+  padding-top: 90px; /* evita que el contenido quede tapado por la navbar */
+}
+
+
+/* ==========================================================================
+   SECTION BASE STYLES
+   ========================================================================== */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  padding: 2.5rem 1rem;
+}
+
+/* Titles */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: inherit;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-family: 'Rubik Dirt', cursive;
+  color: #EAEAEA;
+}
+
+/* section title (uses your .seccion-titulo class) */
+.seccion-titulo {
+  font-size: 2rem;
+  padding: 12px 0;
+  margin-bottom: 0.6rem;
+  color: #00E0C6;
+  font-family: 'Rubik Dirt', cursive;
+  text-align: center;
+}
+
+/* description text */
+.seccion-descripcion {
+  font-size: 1.1rem;
+  color: #000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* paragraph style */
+.seccion-texto {
+  font-size: 1.05rem;
+  color: rgba(234,234,234,0.9);
+  max-width: 850px;
+  text-align: center;
+}
+
+/* dark / light section utilities */
+.seccion-oscura {
+  background-color: #111827;
+  color: #fff;
+}
+
+.seccion-clara {
+  background-color: #fff;
+  color: #1E1E1E;
+}
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  background: linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+  min-height: 75vh;
+  padding: 4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: visible;
+  text-align: center;
+}
+
+/* Inner container to keep hero content centered */
+.hero-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  z-index: 5;
+}
+
+/* hero image container (for overlay cards) */
+.hero-image-container {
+  position: relative;
+  display: inline-block;
+  border-radius: 18px;
+  padding: 8px;
+}
+
+/* developer portrait */
+.hero-imagen-desarrollador {
+  width: 100%;
+  max-width: 277px;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow:
+    0 8px 30px rgba(2, 6, 23, 0.6),
+    0 0 40px rgba(0,173,181,0.12);
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+/* subtle hover */
+.hero-imagen-desarrollador:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 14px 45px rgba(2, 6, 23, 0.72),
+    0 0 55px rgba(0,173,181,0.18);
+}
+
+/* subtitle (typewriter) */
+.typewriter-text {
+  font-size: 1.25rem;
+  color: rgba(234,234,234,0.95);
+  max-width: 900px;
+  margin-top: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  border-right: 3px solid #00ADB5;
+  animation: typing 4.2s steps(60, end), blink-caret 0.85s step-end infinite;
+}
+
+/* typewriter animation -- width is handled by steps */
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50%      { border-color: #00ADB5; }
+}
+
+/* ==========================================================================
+   HERO - FLOATING CARDS
+   ========================================================================== */
+.floating-card {
+  position: absolute;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 12px;
+  min-width: 90px;
+  font-weight: 600;
+  color: #F8FEFF;
+  background: linear-gradient(180deg, rgba(8,12,18,0.75), rgba(0,0,0,0.4));
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 40px rgba(0,173,181,0.12), 0 2px 6px rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px) saturate(120%);
+  transform-origin: center;
+  animation: floatY 4s ease-in-out infinite;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  z-index: 20;
+}
+
+.floating-card i {
+  display: inline-flex;
+  font-size: 1rem;
+  color: #00E0C6;
+}
+
+/* positions relative to image container
+   - left card, top-right card, bottom-right card */
+.card-left {
+  left: -74px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-top-right {
+  right: -58px;
+  top: 8%;
+}
+
+.card-bottom-right {
+  right: -58px;
+  bottom: 8%;
+}
+
+/* floating animation */
+@keyframes floatY {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* hover behaviour */
+.floating-card:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 60px rgba(0,173,181,0.22);
+}
+
+/* small screens hide to reduce clutter */
+@media (max-width: 768px) {
+  .floating-card { display: none; }
+}
+
+/* ==========================================================================
+   ABOUT / EXPERIENCIA
+   ========================================================================== */
+
+.sobre-mi {
+    height: 500px;
+    padding: 10px;
+}
+
+.sobre-mi .contenedor {
+    max-width: 600px;
+    text-align: center;
+}
+
+.sobre-mi .contenedor .button {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 30px rgba(0,173,181,0.18);
+}
+
+.sobre-mi .contenedor .button:hover::before {
+  transform: scaleX(1);
+  box-shadow: 0 12px 40px rgba(0,173,181,0.26);
+}
+
+.sobre-mi .contenedor .button-content {
+  position: relative;
+  z-index: 1;
+}
+
+.sobre-mi .contenedor .button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  width: 100%;
+  height: inherit;
+  border-radius: inherit;
+  background: linear-gradient(
+    82.3deg,
+    #00E0C6 10.8%,
+    rgba(99, 88, 238, 1) 94.3%
+  );
+  transition: all 0.475s;
+}
+
+.sobre-mi .contenedor .button a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Experiencie */
+
+.experiencia {
+    padding: 40px 40px 60px 40px;
+}
+
+.experiencia .columna {
+    padding: 20px;
+    border: 2px solid #8080804d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+}
+
+.experiencia .columna:hover {
+    color: #ffffff;
+    background-color: #1b1b32;
+}
+
+.experiencia i {
+    font-size: 2.5rem;
+    color: #00E0C6;
+    background-color: #0a0a23;
+    padding: 8px 19px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.experiencia-titulo {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.badges-contenedor {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.bade {
+    margin: 5px;
+}
+
+
+
+/* ===== Skills Section ===== */
+.skills {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.skills .section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.skills-container {
+  width: 50vw;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.skill-box {
+  width: 100%;
+  margin: 25px 0;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-box .title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.skill-box .percent {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4070f4;
+}
+
+.skill-box .skill-bar {
+  height: 10px;
+  width: 100%;
+  border-radius: 6px;
+  margin-top: 8px;
+  background: rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.skill-bar .skill-per {
+  position: relative;
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  background: #4070f4;
+  animation: progress 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+.skill-per.liderazgo { width: 94%; animation-delay: 0s; }
+.skill-per.responsabilidad { width: 95%; animation-delay: 0.1s; }
+.skill-per.pensamiento { width: 95%; animation-delay: 0.2s; }
+.skill-per.problemas { width: 88%; animation-delay: 0.3s; }
+.skill-per.comunicacion { width: 80%; animation-delay: 0.4s; }
+.skill-per.adaptabilidad { width: 93%; animation-delay: 0.5s; }
+.skill-per.aprendizaje { width: 100%; animation-delay: 0.6s; }
+.skill-per.equipo { width: 80%; animation-delay: 0.7s; }
+.skill-per.autodisciplina { width: 85%; animation-delay: 0.8s; }
+.skill-per.emocional { width: 100%; animation-delay: 0.9s; }
+
+@keyframes progress {
+  0% { width: 0; opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.skill-per .tooltip {
+  position: absolute;
+  right: -18px;
+  top: -30px;
+  font-size: 10px;
+  font-weight: 500;
+  color: #fff;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: #4070f4;
+}
+
+.skill-per .tooltip::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  height: 8px;
+  width: 8px;
+  background-color: #4070f4;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+
+
+/* ==========================================================================
+   PROJECTS GRID
+   ========================================================================== */
+.proyecto {
+  position: relative;
+  overflow: hidden; /* evita que la imagen sobresalga */
+  border-radius: 10px;
+}
+
+/* Imagen de proyectos */
+.proyecto img {
+  width: 100%;
+  height: 250px; /* alto fijo uniforme */
+  object-fit: contain; /* mantiene toda la imagen visible */
+  background-color: #fff; /* color de fondo para rellenar el espacio vacío */
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  padding: 15px; /* opcional: añade aire alrededor de logos */
+}
+
+/* Hover en imagen */
+.proyecto:hover img {
+  opacity: 0.2;
+  transform: scale(1.02); /* ligero zoom sin cortar */
+}
+
+/* Overlay centrado */
+.overlay {
+  opacity: 0;
+  position: absolute;
+  inset: 0; /* ocupa todo el contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centra vertical */
+  align-items: center;     /* centra horizontal */
+  text-align: center;
+  transition: opacity 0.3s ease;
+  color: #000;
+  padding: 15px;
+}
+
+.proyecto:hover .overlay {
+  opacity: 1;
+}
+
+/* Título dentro del overlay */
+.overlay p {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Iconos en overlay */
+.overlay .iconos-contenedor {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.overlay i {
+  color: #000000;
+  font-size: 40px;
+  transition: transform 0.2s ease;
+}
+
+.overlay i:hover {
+  transform: scale(1.2);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .proyecto img {
+    height: 200px; /* reduce el alto en móviles */
+  }
+
+  .overlay p {
+    font-size: 18px;
+  }
+
+  .overlay i {
+    font-size: 32px;
+  }
+}
+
+a{
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   VOLUNTEERING CARDS
+========================================================================== */
+.voluntariado-section {
+  background: #fff;
+  width: 100%;
+}
+
+.voluntariado-section-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  border-radius: 14px;
+}
+
+.voluntariado-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #000;
+  font-family: 'Rubik Dirt', cursive;
+}
+
+/* Tarjetas */
+.voluntariado-card {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.voluntariado-card:hover {
+  transform: translateY(-5px);
+}
+
+.voluntariado-img {
+  width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.voluntariado-content {
+  flex: 1;
+}
+
+.voluntariado-card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.voluntariado-description {
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  color: #555;
+}
+
+.voluntariado-impact {
+  font-weight: bold;
+  color: #08b6a1;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .voluntariado-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .voluntariado-img {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+
+/* ==========================================================================
+   SPACING BETWEEN SECTIONS & MISC
+   ========================================================================== */
+.proyectos-recientes {
+  margin-bottom: 0px; /* espacio inferior */
+}
+
+#proyectos-2 {
+  margin-top: 0px; /* espacio superior */
+  margin-bottom: 0px; /* espacio inferior */
+}
+
+/* centers the only project on 'Another project' */
+#proyectos-2 .proyectos-contenedor .row {
+  justify-content: center; 
+}
+
+/* === Espacio superior para la sección de voluntariado === */
+.voluntariado-section {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   GET IN TOUCH (Contact / Form)
+   ========================================================================== */
+.get-in-touch-section {
+  background: linear-gradient(180deg, #242e45 0%, #141e32 100%);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* === WRAPPER === */
+.get-in-touch-wrapper {
+  position: relative;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* === TARJETA FLOTANTE LATERAL === */
+.contact-side-card {
+  background: #fff;
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(2,6,23,0.12);
+  border: 1px solid rgba(2,6,23,0.04);
+  position: absolute;
+  left: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 250px;
+  z-index: 10;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.info-item i {
+  font-size: 1.5rem;
+  color: #00ADB5;
+  margin-right: 15px;
+}
+
+.info-item h5 {
+  margin: 0;
+  font-weight: 600;
+  color: #222;
+}
+
+.info-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* === TARJETA PRINCIPAL === */
+.get-in-touch-card {
+  display: flex;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+}
+
+/* === IMAGEN IZQUIERDA === */
+.form-image {
+  flex: 1;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.form-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* === CONTENIDO DEL FORM === */
+.form-content {
+  flex: 3;
+  background: #fff;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-content h3 {
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* === FORMULARIO === */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+input,
+textarea {
+  border: 1px solid #e6e9eb;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  transition: border-color 220ms ease, box-shadow 220ms ease, background 220ms ease;
+  background-color: #fbfdfe;
+}
+
+input:hover,
+textarea:hover {
+  background-color: #f6fbfb;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #00ADB5;
+  outline: none;
+  box-shadow: 0 6px 24px rgba(0,173,181,0.12);
+  background-color: #fff;
+}
+
+/* === BOTÓN === */
+.btn-send {
+  background: linear-gradient(90deg,#00ADB5,#00E0C6);
+  color: #08121a;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  align-self: flex-start;
+  box-shadow: 0 10px 36px rgba(0,173,181,0.18);
+}
+
+.btn-send:hover {
+  background: linear-gradient(90deg,#00E0C6,#00ADB5);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 46px rgba(0,173,181,0.28);
+}
+
+/* === RESPONSIVO === */
+@media (max-width: 992px) {
+  .get-in-touch-wrapper {
+    width: 90%;
+  }
+
+  .contact-side-card {
+    display: none;
+  }
+
+  .get-in-touch-card {
+    flex-direction: column;
+  }
+
+  .form-image {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .form-content {
+    padding: 30px 25px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .btn-send {
+    align-self: center;
+  }
+} 
+
+
+/* Contact */
+
+.contacto .container {
+    max-width: 1100px;
+    min-height: 200px;
+    padding: 20px;
+    position: relative;
+    z-index: 100000;
+}
+
+.contacto .rectangulo {
+    margin-top: -5rem;
+    background-color: rgba(13, 110, 253);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0 1px 4px 1px #ffffff;
+}
+
+.contacto .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.contacto .descripcion {
+    color: #ffffff;
+    font-size: 1.2rem;
+}
+
+.contacto button {
+    color: #ffffff;
+    font-weight: bold;
+    background-color: transparent;
+    border: wpx solid #ffffff;
+    padding: 1.25em 2em;
+    margin: 10px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.contacto button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.contacto button i {
+    color: #ffffff;
+    font-size: 1.3rem;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.contacto button:hover i {
+    color: #000000;
+}
+
+/* Footer */
+
+footer {
+    min-height: 500px;
+}
+
+.footer-logo {
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+}
+
+.footer-texto {
+    font-size: 1.5rem;
+    padding: 20px;
+    margin-bottom: 30px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.iconos-redes-sociales a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    margin: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales i {
+    color: #ffffff;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales a:hover {
+    background-color: #ffffff;
+    border: 2px solid rgb(13, 110, 253);
+}
+
+.iconos-redes-sociales a:hover i {
+    color: #000000;
+}
+
+.derechos-de-autor {
+    font-size: 15px;
+    color: #aeaeae;
+    padding: 20px;
+}
+
+/* ==========================================================================
+   FIXES PARA RESPONSIVE - ELIMINAR ESPACIO BLANCO
+   ========================================================================== */
+
+/* 1. PREVENIR OVERFLOW HORIZONTAL GLOBAL */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* 2. ARREGLAR HERO SECTION */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-image-container {
+    max-width: 100%;
+    overflow: visible;
+}
+
+/* Reposicionar tarjetas flotantes para móviles */
+@media (max-width: 768px) {
+    .floating-card {
+        display: none !important; /* Ocultar completamente en móviles */
+    }
+    
+    .hero-imagen-desarrollador {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    body {
+  padding-top: 70px; /* evita que el contenido quede tapado por la navbar */
+}
+
+.hero-imagen-desarrollador {
+  max-width: 200px;
+}
+}
+
+/* 3. ARREGLAR SKILLS SECTION */
+.skills-container {
+    width: 90vw; /* Cambiar de 50vw a 90vw para móviles */
+    max-width: 600px; /* Limitar máximo en desktop */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        width: 95vw;
+        padding: 0 10px;
+    }
+}
+
+/* 4. ARREGLAR GET IN TOUCH SECTION */
+.get-in-touch-wrapper {
+    width: 90%; /* Reducir de 70% */
+    max-width: 1200px; /* Añadir máximo */
+}
+
+.contact-side-card {
+    position: relative; /* Cambiar posición en móviles */
+    left: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto 30px;
+}
+
+@media (min-width: 992px) {
+    .get-in-touch-wrapper {
+        width: 85%;
+    }
+    
+    .contact-side-card {
+        position: absolute;
+        left: -120px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 250px;
+    }
+}
+
+/* 5. ARREGLAR PROYECTOS SECTION */
+.proyectos-contenedor {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+
+
+/* 6. ARREGLAR VOLUNTEERING SECTION */
+.voluntariado-section-container {
+    width: 95%; /* Reducir de 100% */
+    max-width: 1100px;
+    padding: 2rem 15px;
+}
+
+.voluntariado-card {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* 7. ARREGLAR NAVBAR PARA MÓVILES */
+@media (max-width: 767px) {
+    .navbar {
+        padding: 1rem;
+    }
+    
+    .navbar-collapse {
+        text-align: center;
+    }
+    
+    .navbar-nav {
+        margin-top: 1rem;
+    }
+}
+
+/* 8. ARREGLAR CONTACTO RECTANGLE */
+.contacto .rectangulo {
+    margin: -5rem 15px 0; /* Añadir márgenes laterales */
+    width: calc(100% - 30px);
+}
+
+@media (max-width: 768px) {
+    .contacto .rectangulo {
+        margin-top: -3rem;
+    }
+    
+    .contacto .descripcion {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* 9. GARANTIZAR QUE IMÁGENES SEAN RESPONSIVAS */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 10. ARREGLAR TIPOGRAFÍA PARA MÓVILES */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .seccion-titulo {
+        font-size: 1.75rem;
+    }
+    
+    .typewriter-text {
+        font-size: 1.1rem;
+        white-space: normal; /* Permitir wrap en móviles */
+        border-right: none; /* Quitar cursor en móviles */
+        animation: none; /* Desactivar animación typewriter */
+    }
+}
+
+/* 11. ARREGLAR HERO INFERIOR */
+.hero-inferior {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.hero-inferior-imagen {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+    .testimonio-imagen {
+        height: 120px;
+        width: 120px;
+    }
+
+    .testimonio-texto {
+        font-size: 18px;
+    }
+} 
+
+@media screen and (max-width: 400px) {
+    .overlay p {
+        font-size: 15px;
+    }
+
+    .overlay i {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .navbar-icon-section {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 700px) {
+    .hero-inferior-imagen{
+        max-width: 600px;
+    }
+}
