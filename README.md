@@ -66,7 +66,7 @@ This new edition focuses on **better user experience, resource accessibility, an
 ## 📫 Contact Me  
 I’d love to connect and collaborate!  
 📍 *San Salvador, El Salvador*  
-💌 [justinjosue75@gmail.com] *(justinjosue75@gmail.com)*  
+💌 [justinjosue75@gmail.com]
 🔗 [LinkedIn](https://www.linkedin.com/in/75justin-valladares/)
 
 ---
